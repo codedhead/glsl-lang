@@ -608,6 +608,10 @@ fn tokenize_type_specifier_non_array(t: &ast::TypeSpecifierNonArray) -> TokenStr
         }
 
         // end GL_KHR_vulkan_glsl types
+        // GLSL_EXT_ray_tracing
+        ast::TypeSpecifierNonArrayData::AccelerationStructureEXT => {
+            quote! { glsl_lang::ast::TypeSpecifierNonArrayData::AccelerationStructureEXT }
+        }
         ast::TypeSpecifierNonArrayData::Struct(ref s) => {
             let s = tokenize_struct_non_declaration(s);
             quote! { glsl_lang::ast::TypeSpecifierNonArrayData::Struct(#s) }
@@ -843,6 +847,21 @@ fn tokenize_storage_qualifier(q: &ast::StorageQualifier) -> TokenStream {
         }
         ast::StorageQualifierData::Varying => {
             quote! { glsl_lang::ast::StorageQualifierData::Varying }
+        }
+        ast::StorageQualifierData::RayPayloadEXT => {
+            quote! { glsl_lang::ast::StorageQualifierData::RayPayloadEXT }
+        }
+        ast::StorageQualifierData::RayPayloadInEXT => {
+            quote! { glsl_lang::ast::StorageQualifierData::RayPayloadInEXT }
+        }
+        ast::StorageQualifierData::HitAttributeEXT => {
+            quote! { glsl_lang::ast::StorageQualifierData::HitAttributeEXT }
+        }
+        ast::StorageQualifierData::CallableDataEXT => {
+            quote! { glsl_lang::ast::StorageQualifierData::CallableDataEXT }
+        }
+        ast::StorageQualifierData::CallableDataInEXT => {
+            quote! { glsl_lang::ast::StorageQualifierData::CallableDataInEXT }
         }
 
         ast::StorageQualifierData::Subroutine(ref n) => {

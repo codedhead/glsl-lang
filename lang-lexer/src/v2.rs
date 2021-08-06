@@ -183,6 +183,7 @@ pub fn lang_token(
                 types::TypeName::SUBPASSINPUTMS => Token::SubpassInputMs,
                 types::TypeName::ISUBPASSINPUTMS => Token::ISubpassInputMs,
                 types::TypeName::USUBPASSINPUTMS => Token::USubpassInputMs,
+                types::TypeName::ACCELERATIONSTRUCTURE_EXT => Token::AccelerationStructureEXT,
                 other => Token::TypeName(other.to_string().into()),
             },
             types::Token::FLOAT_CONST(val) => Token::FloatConstant(val),
@@ -279,6 +280,11 @@ pub fn lang_token(
             types::Token::STRUCT => Token::Struct,
             types::Token::ATTRIBUTE => Token::Attribute,
             types::Token::VARYING => Token::Varying,
+            types::Token::RAYPAYLOAD_EXT => Token::RayPayloadEXT,
+            types::Token::RAYPAYLOADIN_EXT => Token::RayPayloadInEXT,
+            types::Token::HITATTRIBUTE_EXT => Token::HitAttributeEXT,
+            types::Token::CALLABLEDATA_EXT => Token::CallableDataEXT,
+            types::Token::CALLABLEDATAIN_EXT => Token::CallableDataInEXT,
             types::Token::COMMON
             | types::Token::PARTITION
             | types::Token::ACTIVE

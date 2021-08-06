@@ -588,6 +588,9 @@ where
         ast::TypeSpecifierNonArrayData::SubpassInputMs => f.write_str("subpassInputMS"),
         ast::TypeSpecifierNonArrayData::ISubpassInputMs => f.write_str("isubpassInputMS"),
         ast::TypeSpecifierNonArrayData::USubpassInputMs => f.write_str("usubpassInputMS"),
+        ast::TypeSpecifierNonArrayData::AccelerationStructureEXT => {
+            f.write_str("accelerationStructureEXT")
+        }
         ast::TypeSpecifierNonArrayData::Struct(ref st) => show_struct_non_declaration(f, st, state),
         ast::TypeSpecifierNonArrayData::TypeName(ref tn) => show_type_name(f, tn, state),
     }
@@ -812,6 +815,11 @@ where
         ast::StorageQualifierData::WriteOnly => f.write_str("writeonly"),
         ast::StorageQualifierData::Attribute => f.write_str("attribute"),
         ast::StorageQualifierData::Varying => f.write_str("varying"),
+        ast::StorageQualifierData::RayPayloadEXT => f.write_str("rayPayloadEXT"),
+        ast::StorageQualifierData::RayPayloadInEXT => f.write_str("rayPayloadInEXT"),
+        ast::StorageQualifierData::HitAttributeEXT => f.write_str("hitAttributeEXT"),
+        ast::StorageQualifierData::CallableDataEXT => f.write_str("callableDataEXT"),
+        ast::StorageQualifierData::CallableDataInEXT => f.write_str("callableDataInEXT"),
         ast::StorageQualifierData::Subroutine(ref n) => show_subroutine(f, n, state),
     }
 }

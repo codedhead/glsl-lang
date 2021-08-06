@@ -191,7 +191,8 @@ impl<'i> Iterator for LexerIterator<'i> {
                             | TextureCubeArray | ITextureCubeArray | UTextureCubeArray
                             | TextureBuffer | ITextureBuffer | UTextureBuffer | Sampler
                             | SamplerShadow | SubpassInput | ISubpassInput | USubpassInput
-                            | SubpassInputMs | ISubpassInputMs | USubpassInputMs => {
+                            | SubpassInputMs | ISubpassInputMs | USubpassInputMs
+                            | AccelerationStructureEXT => {
                                 Identifier(src.slice().into())
                             }
                             other => other,

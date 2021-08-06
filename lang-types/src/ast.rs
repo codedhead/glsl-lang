@@ -605,6 +605,13 @@ pub enum TypeSpecifierNonArrayData {
     USubpassInputMs,
 
     // end GL_KHR_vulkan_glsl types
+
+    // GLSL_EXT_ray_tracing types
+    /// `accelerationStructureEXT` type specifier
+    #[lang_util(display(extra = "accelerationStructureEXT"))]
+    AccelerationStructureEXT,
+    // end GLSL_EXT_ray_tracing types
+
     /// `struct` type specifier
     #[lang_util(display(extra = "struct"))]
     Struct(StructSpecifier),
@@ -824,6 +831,23 @@ pub enum StorageQualifierData {
     /// `varying` storage qualifier
     #[lang_util(display(extra = "varying"))]
     Varying,
+    // GLSL_EXT_ray_tracing qualifiers
+    /// `rayPayloadEXT` storage qualifier
+    #[lang_util(display(extra = "rayPayloadEXT"))]
+    RayPayloadEXT,
+    /// `rayPayloadInEXT` storage qualifier
+    #[lang_util(display(extra = "rayPayloadInEXT"))]
+    RayPayloadInEXT,
+    /// `hitAttributeEXT` storage qualifier
+    #[lang_util(display(extra = "hitAttributeEXT"))]
+    HitAttributeEXT,
+    /// `callableDataEXT` storage qualifier
+    #[lang_util(display(extra = "callableDataEXT"))]
+    CallableDataEXT,
+    /// `callableDataInEXT` storage qualifier
+    #[lang_util(display(extra = "callableDataInEXT"))]
+    CallableDataInEXT,
+    // end GLSL_EXT_ray_tracing qualifiers
     // Note: the grammar says TYPE_NAME but type_specifier makes more sense given the definition of
     // subroutine. The reference implementation is marked "to do".
     /// `subroutine` storage qualifier

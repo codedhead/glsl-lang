@@ -491,6 +491,9 @@ pub enum TypeName {
     /// "usubpassInputMS"
     #[display(fmt = "usubpassInputMS")]
     USUBPASSINPUTMS,
+    /// "accelerationStructureEXT"
+    #[display(fmt = "accelerationStructureEXT")]
+    ACCELERATIONSTRUCTURE_EXT,
     /// Reserved for future use
     RESERVED(TypeNameAtom),
     /// Generic type name
@@ -1133,6 +1136,13 @@ impl TypeName {
                 type_name_atom,
                 is_type_name,
             );
+        } else if type_name_atom == type_name!("accelerationStructureEXT") {
+            return ACCELERATIONSTRUCTURE_EXT.gate(
+                version >= 460 && target_vulkan,
+                false,
+                type_name_atom,
+                is_type_name,
+            );
         }
 
         // Reserved for future use
@@ -1353,6 +1363,43 @@ pub enum Token {
     /// "varying"
     #[lang_util(token = "varying", kind = "storage qualifier", kind = "type qualifier")]
     VARYING,
+    // GLSL_EXT_ray_tracing
+    /// "rayPayloadEXT"
+    #[lang_util(
+        token = "rayPayloadEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    RAYPAYLOAD_EXT,
+    /// "rayPayloadInEXT"
+    #[lang_util(
+        token = "rayPayloadInEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    RAYPAYLOADIN_EXT,
+    /// "hitAttributeEXT"
+    #[lang_util(
+        token = "hitAttributeEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    HITATTRIBUTE_EXT,
+    /// "callableDataEXT"
+    #[lang_util(
+        token = "callableDataEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    CALLABLEDATA_EXT,
+    /// "callableDataInEXT"
+    #[lang_util(
+        token = "callableDataInEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    CALLABLEDATAIN_EXT,
+    // end GLSL_EXT_ray_tracing
     /// "coherent"
     #[lang_util(
         token = "coherent",
@@ -1837,6 +1884,16 @@ impl Token {
             Some(ATTRIBUTE)
         } else if *keyword_atom == keyword!("varying") {
             Some(VARYING)
+        } else if *keyword_atom == keyword!("rayPayloadEXT") {
+            Some(RAYPAYLOAD_EXT)
+        } else if *keyword_atom == keyword!("rayPayloadInEXT") {
+            Some(RAYPAYLOADIN_EXT)
+        } else if *keyword_atom == keyword!("hitAttributeEXT") {
+            Some(HITATTRIBUTE_EXT)
+        } else if *keyword_atom == keyword!("callableDataEXT") {
+            Some(CALLABLEDATA_EXT)
+        } else if *keyword_atom == keyword!("callableDataInEXT") {
+            Some(CALLABLEDATAIN_EXT)
         } else if *keyword_atom == keyword!("coherent") {
             Some(COHERENT)
         } else if *keyword_atom == keyword!("volatile") {

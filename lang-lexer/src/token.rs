@@ -224,6 +224,43 @@ pub enum Token {
     #[cfg_attr(feature = "v1", token("varying"))]
     #[lang_util(token = "varying", kind = "storage qualifier", kind = "type qualifier")]
     Varying,
+    // GLSL_EXT_ray_tracing
+    #[cfg_attr(feature = "v1", token("rayPayloadEXT"))]
+    #[lang_util(
+        token = "rayPayloadEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    RayPayloadEXT,
+    #[cfg_attr(feature = "v1", token("rayPayloadInEXT"))]
+    #[lang_util(
+        token = "rayPayloadInEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    RayPayloadInEXT,
+    #[cfg_attr(feature = "v1", token("hitAttributeEXT"))]
+    #[lang_util(
+        token = "hitAttributeEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    HitAttributeEXT,
+    #[cfg_attr(feature = "v1", token("callableDataEXT"))]
+    #[lang_util(
+        token = "callableDataEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    CallableDataEXT,
+    #[cfg_attr(feature = "v1", token("callableDataInEXT"))]
+    #[lang_util(
+        token = "callableDataInEXT",
+        kind = "storage qualifier",
+        kind = "type qualifier"
+    )]
+    CallableDataInEXT,
+    // end GLSL_EXT_ray_tracing
     #[cfg_attr(feature = "v1", token("noperspective"))]
     #[lang_util(
         token = "noperspective",
@@ -712,6 +749,10 @@ pub enum Token {
     #[lang_util(token = "usubpassInputMS")]
     USubpassInputMs,
     // End Vulkan-target keywords
+    // GLSL_EXT_ray_tracing
+    #[cfg_attr(feature = "v1", token("accelerationStructureEXT"))]
+    #[lang_util(token = "accelerationStructureEXT")]
+    AccelerationStructureEXT,
     #[cfg_attr(feature = "v1", token("struct"))]
     #[lang_util(token = "struct", kind = "struct", kind = "keyword")]
     Struct,

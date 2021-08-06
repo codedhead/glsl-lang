@@ -251,6 +251,8 @@ type_specifier_non_struct: ast::TypeSpecifierNonArrayData = {
     "subpassInputMS"         => ast::TypeSpecifierNonArrayData::SubpassInputMs,
     "isubpassInputMS"        => ast::TypeSpecifierNonArrayData::ISubpassInputMs,
     "usubpassInputMS"        => ast::TypeSpecifierNonArrayData::USubpassInputMs,
+    // GLSL_EXT_ray_tracing
+    "accelerationStructureEXT" => ast::TypeSpecifierNonArrayData::AccelerationStructureEXT,
 };
 
 type_specifier_non_array: ast::TypeSpecifierNonArray = {
@@ -594,6 +596,13 @@ storage_qualifier_data: ast::StorageQualifierData = {
     "writeonly" => ast::StorageQualifierData::WriteOnly,
     "attribute" => ast::StorageQualifierData::Attribute,
     "varying"   => ast::StorageQualifierData::Varying,
+    // - GLSL_EXT_ray_tracing
+    "rayPayloadEXT"     => ast::StorageQualifierData::RayPayloadEXT,
+    "rayPayloadInEXT"   => ast::StorageQualifierData::RayPayloadInEXT,
+    "hitAttributeEXT"   => ast::StorageQualifierData::HitAttributeEXT,
+    "callableDataEXT"   => ast::StorageQualifierData::CallableDataEXT,
+    "callableDataInEXT" => ast::StorageQualifierData::CallableDataInEXT,
+    // - GLSL_EXT_ray_tracing
     "subroutine" <t:("(" <comma<type_specifier>> ")")?> =>
         ast::StorageQualifierData::Subroutine(t.unwrap_or_else(|| vec![])),
 };
@@ -927,6 +936,13 @@ extern {
         "writeonly"              => Token::WriteOnly,
         "attribute"              => Token::Attribute,
         "varying"                => Token::Varying,
+        // - GLSL_EXT_ray_tracing
+        "rayPayloadEXT"          => Token::RayPayloadEXT,
+        "rayPayloadInEXT"        => Token::RayPayloadInEXT,
+        "hitAttributeEXT"        => Token::HitAttributeEXT,
+        "callableDataEXT"        => Token::CallableDataEXT,
+        "callableDataInEXT"      => Token::CallableDataInEXT,
+        // - GLSL_EXT_ray_tracing
         "subroutine"             => Token::Subroutine,
         "layout"                 => Token::Layout,
         "precision"              => Token::Precision,
@@ -1079,6 +1095,8 @@ extern {
         "subpassInputMS"         => Token::SubpassInputMs,
         "isubpassInputMS"        => Token::ISubpassInputMs,
         "usubpassInputMS"        => Token::USubpassInputMs,
+        // GLSL_EXT_ray_tracing
+        "accelerationStructureEXT" => Token::AccelerationStructureEXT,
         "invariant"              => Token::Invariant,
         "precise"                => Token::Precise,
         "else"                   => Token::Else,

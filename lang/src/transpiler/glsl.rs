@@ -1064,7 +1064,9 @@ where
                 f.write_str(")")?;
             }
 
-            show_expr(f, a, state)
+            f.write_str("[")?;
+            show_expr(f, a, state)?;
+            f.write_str("]")
         }
         ast::ExprData::FunCall(ref fun, ref args) => {
             show_function_identifier(f, fun, state)?;
